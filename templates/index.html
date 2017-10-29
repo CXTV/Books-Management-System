@@ -122,11 +122,11 @@
                                    <td class="col-md-2">{{ book_obj.title }}</td>
                                    <td class="col-md-2">
                                    {%for author in book_obj.authors.values %}
-                                    <span>{{author.name}}</span>
+                                    <span>{{author.name}},</span>
                                     {% endfor %}
                                    </td>
                                    <td class="col-md-2">{{ book_obj.publishDate|date:"Y-m-d" }}</td>
-                                   <td class="col-md-2">{{ book_obj.Pubname.name }}</td>
+                                   <td class="col-md-2">{{ book_obj.pubname }}</td>
                                    <td class="col-md-2">
                                        <a href="/del/{{ book_obj.nid }}"><button class="btn btn-danger">删除</button></a>
                                        <a href="/edit/?book_id={{ book_obj.nid }}"><button class="btn btn-info">编辑</button></a>

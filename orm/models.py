@@ -9,13 +9,14 @@ class Book(models.Model):
     pubname = models.ForeignKey(to='Pubname',to_field ='nid') #一对多
     authors=models.ManyToManyField(to='Author')
 
-
-
 class Pubname(models.Model):
     nid = models.AutoField(primary_key=True)
     name=models.CharField(max_length=32)
     address=models.CharField(max_length=32)
     email=models.EmailField()
+
+    def __str__(self):
+        return self.name
 
 class Author(models.Model):
     nid = models.AutoField(primary_key=True)
