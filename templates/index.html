@@ -48,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Project name</a>
+            <a class="navbar-brand" href="">Book Management System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -120,9 +120,13 @@
                              <tr>
                                    <td class="col-md-2">{{ forloop.counter }}</td>
                                    <td class="col-md-2">{{ book_obj.title }}</td>
-                                   <td class="col-md-2">{{ book_obj.author }}</td>
+                                   <td class="col-md-2">
+                                   {%for author in book_obj.authors.values %}
+                                    <span>{{author.name}}</span>
+                                    {% endfor %}
+                                   </td>
                                    <td class="col-md-2">{{ book_obj.publishDate|date:"Y-m-d" }}</td>
-                                   <td class="col-md-2">{{ book_obj.publish }}</td>
+                                   <td class="col-md-2">{{ book_obj.Pubname.name }}</td>
                                    <td class="col-md-2">
                                        <a href="/del/{{ book_obj.nid }}"><button class="btn btn-danger">删除</button></a>
                                        <a href="/edit/?book_id={{ book_obj.nid }}"><button class="btn btn-info">编辑</button></a>
