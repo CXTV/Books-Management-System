@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% extends "base.html" %} 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,6 @@
     <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
 <form action="/edit/" method="post">
     <p><input type="hidden" name='book_id' value="{{editbook.nid}}"></p>
     <p>书名<input type="text" name='title' value="{{editbook.title}}"></p>
