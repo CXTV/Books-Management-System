@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<form action="/add/" method="post">
+    <p>书名：<input type="text" name="title"></p>
+    <p>价格：<input type="text" name="price"></p>
+    <p>出版社日期：<input type="date" name="pubDate"></p>
+    <p>出版社：
+        <select name="publisher" id="">
+              {% for publish_obj in publishList %}
+                  <option value="{{ publish_obj.id }}">{{ publish_obj.name }}</option>
+              {% endfor %}
+
+        </select>
+    </p>
+    <p>作者：
+        <select name="authorlist" id="" multiple size="3">
+              {% for author_obj in authorList %}
+
+                  <option value="{{ author_obj.id }}">{{ author_obj.name }}</option>
+
+              {% endfor %}
+
+        </select>
+    </p>
+
+     <p><input type="submit"></p>
+</form>
+</body>
+</html>

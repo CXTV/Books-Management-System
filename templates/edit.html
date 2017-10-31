@@ -1,16 +1,44 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+<form action="/add/" method="post">
+    <p>书名：<input type="text" name="title" value="{{ edit_book.title }}"></p>
+    <p>价格：<input type="text" name="price" value="{{ edit_book.price }}"></p>
+    <p>出版社日期：<input type="date" name="pubDate" value="{{ edit_book.publishDate|date:'Y-m-d' }}"></p>
+    <p>出版社：
+        <select name="publisher" id="">
+              {% for publish_obj in publishList %}
+                  {% if publish_obj.id == edit_book.publish.id %}
+                  <option selected value="{{ publish_obj.id }}">{{ publish_obj.name }}</option>
+                  {% endif %}
+                  <option  value="{{ publish_obj.id }}">{{ publish_obj.name }}</option>
+              {% endfor %}
 
-{% block title %} edit {% endblock %}
+        </select>
+    </p>
+    <p>作者：
 
-{% block body %} 
+        <select name="authorlist" id="" multiple size="3">
+              {% for author_obj in authorList %}
+                  {% if author_obj.id in l %}
+                    <option selected value="{{ author_obj.id }}">{{ author_obj.name }}</option>
+                  {% else %}
+                      <option value="{{ author_obj.id }}">{{ author_obj.name }}</option>
+                  {% endif %}
 
-<form action="/edit/" method="post">
-    <p><input type="hidden" name='book_id' value="{{editbook.nid}}"></p>
-    <p>书名<input type="text" name='title' value="{{editbook.title}}"></p>
-    <p>作者<input type="text" name='author' value="{{editbook.authors.values}}"></p>
-    <p>出版日期<input type="date" name='date' value="{{editbook.publishDate|date:'Y-m-d'}}"></p>
-    <p>出版社<input type="text" name='price' value="{{editbook.pubname}}"></p>
-    <p><input type="submit"></p>
+
+              {% endfor %}
+
+        </select>
+    </p>
+
+     <p><input type="submit"></p>
 </form>
-
-{% endblock %}
+</body>
+</html>
