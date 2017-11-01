@@ -1,60 +1,12 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-
-    <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
+    <title>add </title>
 </head>
 <body>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <a href="/add/"><button class="btn btn-primary">添加</button></a>
-            <table class="table table-bordered">
-                <tr>
-                    <th>编号</th>
-                    <th>书名</th>
-                    <th>价格</th>
-                    <th>出版日期</th>
-                    <th>作者</th>
-                    <th>出版社</th>
-                    <th>操作</th>
-                </tr>
-
-                 {% for book_obj in all_book_list %}
-                     <tr>
-                       <td>{{ forloop.counter }}</td>
-                       <td>{{ book_obj.title }}</td>
-                       <td>{{ book_obj.price }}</td>
-                       <td>{{ book_obj.publishDate|date:"Y-m-d" }}</td>
-                       <td>{% for author in book_obj.authorlist.all %}
-                             {{ author.name }}
-                            {% endfor %}
-                       </td>
-                       <td>{{ book_obj.publish.name }}</td>
-                       <td>
-                           <button class="btn btn-danger">删除</button>
-                           <a href="/edit/{{ book_obj.id }}/"><button class="btn btn-success">编辑</button></a>
-                       </td>
-                    </tr>
-
-                 {% endfor %}
-                 
-
-            </table>
-        </div>
-    </div>
-</div>
-
-
-</body>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +17,6 @@
      <link rel="stylesheet" href="/static/bootstrap-3.3.7/css/bootstrap.min.css">
      <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-{% block body %}
      <style>
         .ccc {
             margin-top: 70px;
@@ -106,7 +57,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Book Management System</a>
+            <a class="navbar-brand" href="">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -121,7 +72,6 @@
         </div>
     </div>
 </nav>
-{% endblock %}
 <div class="container-fluid ccc">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar cc">
@@ -159,43 +109,14 @@
         <div class="col-sm-9 col-md-10 main">
             <div class="panel panel-primary">
                 <div class="panel-heading">Panel heading</div>
-                <div class="panel-body">
-                <a href="/addbook/"><button class="btn btn-primary">添加书籍</button></a>
-            <table class="table table-striped">
-                 <thead>
-                      <tr>
-                          <th>编号</th>
-                          <th>书名</th>
-                          <th>作者</th>
-                          <th>出版日期</th>
-                          <th>出版社</th>
-                          <th>操作</th>
-                      </tr>
-                 </thead>
-
-                <tbody>
-                    {% for book_obj in bookList %}
-                             <tr>
-                                   <td class="col-md-2">{{ forloop.counter }}</td>
-                                   <td class="col-md-2">{{ book_obj.title }}</td>
-                                   <td class="col-md-2">
-                                   {%for author in book_obj.authors.values %}
-                                    <span>{{author.name}},</span>
-                                    {% endfor %}
-                                   </td>
-                                   <td class="col-md-2">{{ book_obj.publishDate|date:"Y-m-d" }}</td>
-                                   <td class="col-md-2">{{ book_obj.pubname }}</td>
-                                   <td class="col-md-2">
-                                       <a href="/del/{{ book_obj.nid }}"><button class="btn btn-danger">删除</button></a>
-                                       <a href="/edit/?book_id={{ book_obj.nid }}"><button class="btn btn-info">编辑</button></a>
-                                   </td>
-                               </tr>
-                      {% endfor %}
-                    
-                </tbody>
-            </table>
-                    
-
+                	<div class="panel-body">
+                		<form action="/addbook/" method="post">
+							<p>Titel:<input type="text" name='title'></p>	
+							<p>Author:<input type="text" name='author'></p>	
+							<p>PublishDate:<input type="date" name='pubdate'></p>	
+							<p>Pubname:<input type="text" name='publish'></p>
+							<p><input type="submit"></p>
+						</form>
                         
                     </div>
                 </div>
@@ -204,16 +125,13 @@
     </div>
 </div>
 
-
-
 <script>
 
     $('.clc').on('click', function () {
         $(this).parent().siblings().children('ul').addClass('hide');
         $(this).next().toggleClass('hide');
-    })
+    });
 
 </script>
 </body>
->>>>>>> parent of 66db59a... author_edit_show
 </html>
