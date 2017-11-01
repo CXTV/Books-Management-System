@@ -23,4 +23,7 @@ urlpatterns = [
     url(r'^del/(\d+)',views.delbook),
     url(r'^addbook/',views.add),
     url(r'^edit/(\d+)',views.editbook),
+    url(r'^login/$', views.login),
+    url(r'^register/$', views.register)
+
 ]

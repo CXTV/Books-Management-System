@@ -50,3 +50,20 @@ def editbook(request,id):
 	return render(request,'edit.html',locals())
 
 
+def login(request):
+    if request.method == 'POST':
+    	username = request.POST.get('username')
+    	password = request.POST.get('password')
+    	user = auth.authenticate(request, username=username, password=password)
+    	if user:
+        	auth.login(request, user)
+        	return redirect('/index/')
+    return render(request, 'login.html')
+
+
+def register(request):
+	if request.method =='POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+
+	return render(request,'register.html')
