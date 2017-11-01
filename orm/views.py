@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from orm import models
 # Create your views here.
 
-
 def index(request):
 	
 	bookList = models.Book.objects.all()
@@ -13,8 +12,8 @@ def add(request):
 	if request.method == 'POST':
 		title = request.POST.get('title')
 		author = request.POST.get('author')
-		pubDate = request.POST.get('publishdate')
-		pubname = request.POST.get('pubname')
+		pubDate = request.POST.get('pubdate')
+		publish = request.POST.get('publish')
 		book_obj = models.Book.objects.create(title=title,author=author,publishDate=pubDate,publish=publish)
 		return redirect('/index/')
 
