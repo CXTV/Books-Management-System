@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Author: Rocks
+# @Date:   2017-11-01 16:54:32
+# @Last Modified by:   Rocks
+# @Last Modified time: 2017-11-01 16:55:33
 from django.db import models
 
 # Create your models here.

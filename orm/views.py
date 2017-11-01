@@ -2,45 +2,51 @@ from django.shortcuts import render,redirect
 from orm import models
 # Create your views here.
 
-def index(request):
-	
-	bookList = models.Book.objects.all()
-	return render(request,'index.html',{'bookList':bookList})
+def index(request):	
+	bookList = models.Book.objects.all()   
+	return render(request,'index.html',locals())
 
 def add(request):
-
 	if request.method == 'POST':
+		print(request.POST)   #打印方便查看
 		title = request.POST.get('title')
-		author = request.POST.get('author')
+		author = request.POST.getlist('authorlist')    #多个对象，用getlist
 		pubDate = request.POST.get('pubdate')
-		publish = request.POST.get('publish')
-		book_obj = models.Book.objects.create(title=title,author=author,publishDate=pubDate,publish=publish)
+		publish = request.POST.get('pubnamelist')
+		book_obj = models.Book.objects.create(title=title,publishDate=pubDate,pubname_id=publish)
+		book_obj.authors.add(*author)    #多对多添加
+
 		return redirect('/index/')
+
+	publishlist = models.Pubname.objects.all()
+	authorList = models.Author.objects.all()
+	return render(request,'addbook.html',locals())
+
+
 
 	return render(request,'addbook.html')
 
 def delbook(request,id):
-
 	models.Book.objects.filter(nid=id).delete()
 	return redirect('/index/')
 
 
-def editbook(request):
-
+def editbook(request,id):
 	if request.method == "POST":
+		print(request.POST)
 		id = request.POST.get('book_id')
 		title = request.POST.get('title')
-		author = request.POST.get('author')
-		date = request.POST.get('date')
-		publish = request.POST.get('publish')
-
-		models.Book.objects.filter(nid=id).update(title=title,author=author,publishDate=date,publish=publish)
+		author = request.POST.getlist('authorlist')    #多个对象，用getlist
+		pubDate = request.POST.get('pubdate')
+		publish = request.POST.get('pubnamelist')
+		book_obj = models.Book.objects.create(title=title,publishDate=pubDate,pubname_id=publish)
+		book_obj.authors.add(*author) 
 		return redirect('/index/')
 
-	id = request.GET.get('book_id')
-	editbook=models.Book.objects.filter(nid=id)[0]  #    [obj1,]
-
-
-	return render(request,'edit.html',{'editbook':editbook})
+	bookObj = models.Book.objects.get(nid = id)
+	authorList = models.Author.objects.all()
+	publishlist = models.Pubname.objects.all()
+	print(bookObj.publishDate)
+	return render(request,'edit.html',locals())
 
 

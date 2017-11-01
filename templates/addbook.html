@@ -111,10 +111,25 @@
                 <div class="panel-heading">Panel heading</div>
                 	<div class="panel-body">
                 		<form action="/addbook/" method="post">
-							<p>Titel:<input type="text" name='title'></p>	
-							<p>Author:<input type="text" name='author'></p>	
-							<p>PublishDate:<input type="date" name='pubdate'></p>	
-							<p>Pubname:<input type="text" name='publish'></p>
+							<p>书名:<input type="text" name='title'></p>	
+							<p>作者:
+                                <select name="authorlist" id="" multiple siez="4">
+                                    {% for i in authorList %}
+                                        <option value="{{i.nid}}">{{i.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+
+
+
+							<p>出版日期:<input type="date" name='pubdate'></p>	
+							<p>出版社:
+                                <select name="pubnamelist" id="">
+                                    {% for i in publishlist %}
+                                        <option value="{{i.nid}}">{{i.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
 							<p><input type="submit"></p>
 						</form>
                         

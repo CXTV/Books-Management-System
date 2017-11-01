@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^index/', views.index),
     url(r'^del/(\d+)',views.delbook),
     url(r'^addbook/',views.add),
-    url(r'^edit/',views.editbook),
+    url(r'^edit/(\d+)',views.editbook),
 ]
