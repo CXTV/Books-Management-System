@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %} edit {% endblock %}
+
+{% block body %} 
+
+<form action="/edit/" method="post">
+    <p><input type="hidden" name='book_id' value="{{editbook.nid}}"></p>
+    <p>书名<input type="text" name='title' value="{{editbook.title}}"></p>
+    <p>作者<input type="text" name='author' value="{{editbook.authors.values}}"></p>
+    <p>出版日期<input type="date" name='date' value="{{editbook.publishDate|date:'Y-m-d'}}"></p>
+    <p>出版社<input type="text" name='price' value="{{editbook.pubname}}"></p>
+    <p><input type="submit"></p>
+</form>
+
+{% endblock %}
