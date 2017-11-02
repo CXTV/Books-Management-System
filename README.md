@@ -1,2 +1,2 @@
 # Books-Management-System
-一个简单的图书管理系统
+Openstack book management system,with 3 core technologies,is preparing for 3 months.The 
